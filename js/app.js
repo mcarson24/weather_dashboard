@@ -1,4 +1,5 @@
 const apiKey = '9f176747b923620b00a8bc8aa89846d4'
+let cityInformation
 
 const geocode = async city => {
   // Geocoding Endpoint
@@ -9,11 +10,25 @@ const geocode = async city => {
 
 const search = async city => {
   let cityDetails = await geocode(city)
-  cityDetails = cityDetails[0]
-  
+  cityInformation = cityDetails[0]
+
   // Current Weather Endpoint
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityDetails.lat}&lon=${cityDetails.lon}&appid=${apiKey}`)
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityInformation.lat}&lon=${cityInformation.lon}&appid=${apiKey}`)
   return await response.json()
+}
+
+const forecast = async city => {
+  // 5-day forecast Endpoint
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${cityInformation.lat}&lon=${cityInformation.lon}&appid=${apiKey}`)
+
+  const forecast = await response.json()
+  let fiveDay = {}
+  forecast.list.forEach(weatherInfo => {
+    if (!fiveDay[weatherInfo.dt_txt.slice(0, "2022-03-29 00:00:00".indexOf('00:00') - 1)]) {
+      fiveDay[weatherInfo.dt_txt.slice(0, "2022-03-29 00:00:00".indexOf('00:00') - 1)] = weatherInfo
+    }
+  })
+  return fiveDay
 }
 
 addRecentSearch = city => {
@@ -27,7 +42,6 @@ addRecentSearch = city => {
 }
 
 (async () => {
-  const data = await search('Cologne')
 })()
 
 
@@ -39,7 +53,8 @@ document.querySelector('.search').addEventListener('submit', async e => {
     // Add message to page, turn input red
     return
   }
-  const details = await search(city)
+  const currentWeather = await search(city)
+  const fiveDayForecast = await forecast(city)
   // Save city details in 10 most-recent searches 
-  addRecentSearch(details.name)
+  addRecentSearch(currentWeather.name)
 })
