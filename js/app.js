@@ -7,11 +7,23 @@ const geocode = async city => {
   return await response.json()
 }
 
-(async () => {
-  let city = await geocode('Nuremberg')
-  city = city[0]
+const search = async city => {
+  let cityDetails = await geocode(city)
+  cityDetails = cityDetails[0]
+  
   // Current Weather Endpoint
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&appid=${apiKey}`)
-  const data = await response.json()
-  console.log(data)
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityDetails.lat}&lon=${cityDetails.lon}&appid=${apiKey}`)
+  return await response.json()
+}
+
+(async () => {
+  const data = await search('Cologne')
 })()
+
+
+document.querySelector('.search').addEventListener('submit', async e => {
+  e.preventDefault()
+  const city = e.target.children[0].value
+  const details = await search(city)
+  console.log(details)
+})
