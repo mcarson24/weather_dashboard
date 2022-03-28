@@ -8,8 +8,10 @@ const geocode = async city => {
 }
 
 (async () => {
-  const data = await geocode('Nuremberg')
-  document.querySelector('#city-name').textContent = data[0].name
-  document.querySelector('#lat').textContent = data[0].lat
-  document.querySelector('#long').textContent = data[0].lon
+  let city = await geocode('Nuremberg')
+  city = city[0]
+  // Current Weather Endpoint
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${city.lat}&lon=${city.lon}&appid=${apiKey}`)
+  const data = await response.json()
+  console.log(data)
 })()
