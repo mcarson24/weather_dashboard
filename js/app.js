@@ -16,6 +16,16 @@ const search = async city => {
   return await response.json()
 }
 
+addRecentSearch = city => {
+  const recents = JSON.parse(localStorage.getItem('recentSearches')) || []
+  // If the city is already in the most recents searches, make it the first item in the array 
+  if (recents.includes(city)) recents.splice(recents.indexOf(city), 1)
+  recents.unshift(city)
+  // Limit recent searches to the ten most recent
+  recents.splice(10)
+  localStorage.setItem('recentSearches', JSON.stringify(recents))
+}
+
 (async () => {
   const data = await search('Cologne')
 })()
@@ -30,5 +40,6 @@ document.querySelector('.search').addEventListener('submit', async e => {
     return
   }
   const details = await search(city)
-  console.log(details)
+  // Save city details in 10 most-recent searches 
+  addRecentSearch(details.name)
 })
