@@ -23,7 +23,12 @@ const search = async city => {
 
 document.querySelector('.search').addEventListener('submit', async e => {
   e.preventDefault()
-  const city = e.target.children[0].value
+  const city = e.target.children[0].value.trim()
+  if (!city) {
+    // Do some error handling
+    // Add message to page, turn input red
+    return
+  }
   const details = await search(city)
   console.log(details)
 })
