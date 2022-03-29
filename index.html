@@ -17,30 +17,38 @@
         </form>
       </section>
     </header>
-    <main class="flex flex-col justify-around items-center" style="height: 800px">
-      <h2 class="text-3xl">Philadelphia</h2>
+    <main class="no-search" style="height: 800px">
+      <h2 class="text-3xl" id="city-name"></h2>
       <section id="current-weather" class="flex w-3/4">
         <article class="flex flex-col justify-center items-center w-full p-4 rounded bg-zinc-100 drop-shadow-lg">
           <div class="flex justify-around w-full">
             <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" class="w-60">
             <div class="flex flex-col items-center justify-around w-1/2">
               <div class="flex justify-between w-1/2">
-                <div class="flex flex-col items-center">
-                  <h3 class="text-3xl">26.6&deg;</h3>
+                <div class="flex flex-col items-center w-1/2">
+                  <h3 class="text-3xl">
+                    <span>26.6</span>&deg;
+                  </h3>
                   <span class="text-sm text-gray-500">Temp</span>
                 </div class="flex justify-between w-1/2">
-                <div class="flex flex-col items-center">
-                  <h3 class="text-3xl">15.75&deg;</h3>
+                <div class="flex flex-col items-center w-1/2">
+                  <h3 class="text-3xl">
+                    <span>26.6</span>&deg;
+                  </h3>
                   <span class="text-sm text-gray-500">Feels Like</span>
                 </div>
               </div>
               <div class="flex justify-between w-1/2">
-                <div class="flex flex-col items-center">
-                  <h3 class="text-3xl">39%</h3>
+                <div class="flex flex-col items-center w-1/2">
+                  <h3 class="text-3xl">
+                    <span>39</span>%
+                  </h3>
                   <span class="text-sm text-gray-500">Humidity</span>
                 </div>
-                <div class="flex flex-col items-center">
-                  <h3 class="text-3xl">10mph</h3>
+                <div class="flex flex-col items-center w-1/2">
+                  <h3 class="text-3xl">
+                    <span>12</span>mph
+                  </h3>
                   <span class="text-sm text-gray-500">Wind Speed</span>
                 </div>
               </div>
