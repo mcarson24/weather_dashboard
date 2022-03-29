@@ -13,7 +13,12 @@ const search = async city => {
   
   // Current Weather Endpoint
   const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityDetails.lat}&lon=${cityDetails.lon}&appid=${apiKey}`)
-  return await response.json()
+  const data = await response.json()
+
+  // Save city details in 10 most-recent searches 
+  addRecentSearch(data.name)
+  console.log(data)
+  return data
 }
 
 addRecentSearch = city => {
@@ -26,11 +31,6 @@ addRecentSearch = city => {
   localStorage.setItem('recentSearches', JSON.stringify(recents))
 }
 
-(async () => {
-  const data = await search('Cologne')
-})()
-
-
 document.querySelector('.search').addEventListener('submit', async e => {
   e.preventDefault()
   const city = e.target.children[0].value.trim()
@@ -39,7 +39,20 @@ document.querySelector('.search').addEventListener('submit', async e => {
     // Add message to page, turn input red
     return
   }
-  const details = await search(city)
-  // Save city details in 10 most-recent searches 
-  addRecentSearch(details.name)
+  const details = await search(city)  
 })
+
+document.addEventListener('DOMContentLoaded', (e) => {
+  const searches = JSON.parse(localStorage.getItem('recentSearches'))
+
+  searches.forEach(search => {
+    const li = document.createElement('li')
+    li.textContent = search
+    document.querySelector('#recent-searches').append(li)
+  })
+
+  document.querySelector('#recent-searches').addEventListener('click', e => {
+    if (!e.target.matches('li')) return
+    search(e.target.textContent)
+  })
+});
