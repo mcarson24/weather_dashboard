@@ -1,3 +1,14 @@
+.no-search {
+  display: none;
+}
+
+.searched {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+}
+
 .uv.low {
   color: green;
 }
