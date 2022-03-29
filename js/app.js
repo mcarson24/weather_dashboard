@@ -1,5 +1,5 @@
 const apiKey = '9f176747b923620b00a8bc8aa89846d4'
-let cityInformation
+let cityInfo = {}
 
 const geocode = async city => {
   // Geocoding Endpoint
@@ -9,36 +9,32 @@ const geocode = async city => {
 }
 
 const search = async city => {
-  let cityDetails = await geocode(city)
-  cityInformation = cityDetails[0]
+  const cityDetails = await geocode(city)
 
-  // Current Weather Endpoint
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/weather?lat=${cityInformation.lat}&lon=${cityInformation.lon}&appid=${apiKey}`)
-  return await response.json()
+  // Use one-call endpoing to get current and forecastes weather data
+  await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cityDetails[0].lat}&lon=${cityDetails[0].lon}&appid=${apiKey}&units=imperial`)
+    .then(response => response.json())
+    .then(({ current, daily }) => {
+      cityInfo = {
+        name: cityDetails[0].name,
+        current,
+        daily: daily.splice(1, 5)
+      }
+      // Save city details to 10 most-recent searches in local storage
+      addCityToRecentSearch()
+    })
 }
 
-const forecast = async city => {
-  // 5-day forecast Endpoint
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cityInformation.lat}&lon=${cityInformation.lon}&appid=${apiKey}&units=imperial`)
-
-  const forecast = await response.json()
-
-  return forecast.daily.splice(1, 5)
-}
-
-addRecentSearch = city => {
+addCityToRecentSearch = () => {
+  const city = cityInfo.name
   const recents = JSON.parse(localStorage.getItem('recentSearches')) || []
-  // If the city is already in the most recents searches, make it the first item in the array 
+  // If the city is already in the most recents searches, move it to the first item in the array 
   if (recents.includes(city)) recents.splice(recents.indexOf(city), 1)
   recents.unshift(city)
-  // Limit recent searches to the ten most recent
+  // Limit the array to the ten most recent searches
   recents.splice(10)
   localStorage.setItem('recentSearches', JSON.stringify(recents))
 }
-
-(async () => {
-})()
-
 
 document.querySelector('.search').addEventListener('submit', async e => {
   e.preventDefault()
@@ -48,8 +44,5 @@ document.querySelector('.search').addEventListener('submit', async e => {
     // Add message to page, turn input red
     return
   }
-  const currentWeather = await search(city)
-  const fiveDayForecast = await forecast(city)
-  // Save city details in 10 most-recent searches 
-  addRecentSearch(currentWeather.name)
+  await search(city)
 })
