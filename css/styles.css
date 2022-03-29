@@ -1,3 +1,43 @@
-body {
-  background-color: tomato;
+.uv.low {
+  color: green;
+}
+
+.uv::after {
+  font-size: 12px;
+}
+
+.uv.low::after {
+  content: '(low)';
+}
+
+.uv.moderate {
+  color: yellow;
+}
+
+.uv.moderate:after {
+  content: '(moderate)'
+}
+
+.uv.high {
+  color: orange;
+}
+
+.uv.high::after {
+  content: '(high)'
+}
+
+.uv.very-high {
+  color: red;
+}
+
+.uv.very-high::after {
+  content: '(very high)'
+}
+
+.uv.extreme {
+  color: purple;
+}
+
+.uv.extreme::after {
+  content: '(extreme)'
 }

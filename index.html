@@ -4,16 +4,189 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>JavaScript Weather Center</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="stylesheet" href="./css/styles.css">
   </head>
-  <body class=" bg-red-200">
-    <main class="min-h-screen flex justify-center items-center">
+  <body>
+    <header class="flex flex-col h-64 py-4 justify-around items-center bg-purple-700">
+      <h1 class="text-6xl text-white">JavaScript Weather Center</h1>
       <section class="search">
         <form>
-          <input type="text" id="city" placeholder="Search for a city">
+          <input type="text" id="city" placeholder="Search for a city" class="py-2 px-1 rounded">
         </form>
+      </section>
+    </header>
+    <main class="h-full xl:h-4/5 flex flex-col justify-around items-center">
+      <h2 class="text-3xl">Philadelphia</h2>
+      <section id="current-weather" class="flex w-3/4">
+        <article class="flex flex-col justify-center items-center w-full p-4 rounded bg-zinc-100 drop-shadow-lg">
+          <div class="flex justify-around w-full">
+            <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" class="w-60">
+            <div class="flex flex-col items-center justify-around w-1/2">
+              <div class="flex justify-between w-1/2">
+                <div class="flex flex-col items-center">
+                  <h3 class="text-3xl">26.6&deg;</h3>
+                  <span class="text-sm text-gray-500">Temp</span>
+                </div class="flex justify-between w-1/2">
+                <div class="flex flex-col items-center">
+                  <h3 class="text-3xl">15.75&deg;</h3>
+                  <span class="text-sm text-gray-500">Feels Like</span>
+                </div>
+              </div>
+              <div class="flex justify-between w-1/2">
+                <div class="flex flex-col items-center">
+                  <h3 class="text-3xl">39%</h3>
+                  <span class="text-sm text-gray-500">Humidity</span>
+                </div>
+                <div class="flex flex-col items-center">
+                  <h3 class="text-3xl">10mph</h3>
+                  <span class="text-sm text-gray-500">Wind Speed</span>
+                </div>
+              </div>
+              <div>
+                <div class="flex flex-col items-center">
+                  <h3 class="uv low text-3xl font-bold">0</h3>
+                  <span class="text-sm text-gray-500">UV Index</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <h3 class="text-3xl">March 28th</h3>
+        </article>
+      </section>
+      <section id="five-day" class="flex flex-row flex-wrap">
+        <!-- Replace this one -->
+        <article class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <h2 class="text-4xl">Mar 29th</h2>
+          <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
+          <div class="flex flex-col w-full justify-center items-center">
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">67.6&deg;</h3>
+                <span class="text-gray-500">High</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">43.32&deg;</h3>
+                <span class="text-gray-500">Low</span>
+              </div>
+            </div>
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">16.58mph</h3>
+                <span class="text-gray-500">wind</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">35%</h3>
+                <span class="text-gray-500">humidity</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <h2 class="text-4xl">Mar 30th</h2>
+          <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
+          <div class="flex flex-col w-full justify-center items-center">
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">67.6&deg;</h3>
+                <span class="text-gray-500">High</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">43.32&deg;</h3>
+                <span class="text-gray-500">Low</span>
+              </div>
+            </div>
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">16.58mph</h3>
+                <span class="text-gray-500">wind</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">35%</h3>
+                <span class="text-gray-500">humidity</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <h2 class="text-4xl">Mar 31st</h2>
+          <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
+          <div class="flex flex-col w-full justify-center items-center">
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">67.6&deg;</h3>
+                <span class="text-gray-500">High</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">43.32&deg;</h3>
+                <span class="text-gray-500">Low</span>
+              </div>
+            </div>
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">16.58mph</h3>
+                <span class="text-gray-500">wind</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">35%</h3>
+                <span class="text-gray-500">humidity</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <h2 class="text-4xl">Apr 1st</h2>
+          <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
+          <div class="flex flex-col w-full justify-center items-center">
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">67.6&deg;</h3>
+                <span class="text-gray-500">High</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">43.32&deg;</h3>
+                <span class="text-gray-500">Low</span>
+              </div>
+            </div>
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">16.58mph</h3>
+                <span class="text-gray-500">wind</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">35%</h3>
+                <span class="text-gray-500">humidity</span>
+              </div>
+            </div>
+          </div>
+        </article>
+        <article class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <h2 class="text-4xl">Apr 2nd</h2>
+          <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
+          <div class="flex flex-col w-full justify-center items-center">
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">67.6&deg;</h3>
+                <span class="text-gray-500">High</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">43.32&deg;</h3>
+                <span class="text-gray-500">Low</span>
+              </div>
+            </div>
+            <div class="flex justify-around w-full">
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">16.58mph</h3>
+                <span class="text-gray-500">wind</span>
+              </div>
+              <div class="flex flex-col items-center justify-center w-1/2">
+                <h3 class="text-xl font-bold">35%</h3>
+                <span class="text-gray-500">humidity</span>
+              </div>
+            </div>
+          </div>
+        </article>
       </section>
     </main>
     <script src="./js/app.js"></script>
