@@ -93,13 +93,11 @@ document.querySelector('.search').addEventListener('submit', async e => {
 document.addEventListener('DOMContentLoaded', () => {
   updateRecentSearches()
   // TODO: add click handlers for click on the recent searches. Should re-fetch info on that city
-  document.querySelector('#recent-searches').addEventListener('click', e => {
+  document.querySelector('#recent-searches').addEventListener('click', async e => {
     if (!e.target.matches('li')) return
 
-    e.target.addEventListener('click', async () => {
-      await search(e.target.textContent)
-      updatePage()
-      document.querySelector('#city').value = ''
-    })
+    await search(e.target.textContent)
+    updatePage()
+    document.querySelector('#city').value = ''
   })
 })
