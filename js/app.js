@@ -65,16 +65,26 @@ const updatePage = () => {
   currentWeather.children[0].children[0].children[1].children[1].children[0].children[0].children[0].textContent = cityInfo.current.humidity
   currentWeather.children[0].children[0].children[1].children[1].children[1].children[0].children[0].textContent = cityInfo.current.wind_speed
   const uv_index = parseFloat(cityInfo.current.uvi)
-  console.log(uv_index)
+
   let uv_class = 'extreme'
   if (uv_index <= 10) uv_class = 'very-high'
   if (uv_index <= 7) uv_class = 'high'
   if (uv_index <= 5) uv_class = 'moderate'
   if (uv_index <= 2) uv_class = 'low'
-  console.log(uv_class)
+
   currentWeather.children[0].children[0].children[1].children[2].children[0].children[0].textContent = cityInfo.current.uvi
   currentWeather.children[0].children[0].children[1].children[2].children[0].children[0].classList = `uv ${uv_class} text-3xl font-bold`
   
+  cityInfo.daily.forEach((day, i) => {
+    const dayForecast = document.querySelector(`#forecast-${i}`)
+
+    dayForecast.children[0].textContent = new Date(day.dt * 1000).toLocaleDateString('en-US')
+    dayForecast.children[1].setAttribute('src', `http://openweathermap.org/img/wn/${day.weather[0].icon}@4x.png`)
+    document.querySelector(`#forecast-${i}-high`).textContent = day.temp.max
+    document.querySelector(`#forecast-${i}-low`).textContent = day.temp.min
+    document.querySelector(`#forecast-${i}-wind`).textContent = day.wind_speed
+    document.querySelector(`#forecast-${i}-humidity`).textContent = day.humidity
+  })
 }
 
 document.querySelector('.search').addEventListener('submit', async e => {
