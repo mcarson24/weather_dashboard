@@ -41,3 +41,14 @@
 .uv.extreme::after {
   content: '(extreme)'
 }
+
+#recent-searches {
+  margin: 0 2.5%;
+  font-size: 25px;
+  background: white;
+  filter: drop-shadow(0 10px 8px rgb(0 0 0 / 0.04)) drop-shadow(0 4px 3px rgb(0 0 0 / 0.1));
+}
+
+#recent-searches li:nth-child(odd) {
+  background-color: lightgray;
+}

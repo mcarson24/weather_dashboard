@@ -46,3 +46,18 @@ document.querySelector('.search').addEventListener('submit', async e => {
   }
   await search(city)
 })
+
+document.addEventListener('DOMContentLoaded', (e) => {
+  const searches = JSON.parse(localStorage.getItem('recentSearches'))
+
+  searches.forEach(search => {
+    const li = document.createElement('li')
+    li.textContent = search
+    document.querySelector('#recent-searches').append(li)
+  })
+
+  document.querySelector('#recent-searches').addEventListener('click', e => {
+    if (!e.target.matches('li')) return
+    search(e.target.textContent)
+  })
+});
