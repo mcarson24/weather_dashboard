@@ -50,12 +50,17 @@ const updateRecentSearches = () => {
   searches.forEach(search => {
     const li = document.createElement('li')
     li.textContent = search
+    li.classList = 'p-2 my-2'
     recentSearches.append(li)
   })
 }
 
 
 const updatePage = () => {
+  document.querySelector('#city-name').classList.remove('hidden')
+  document.querySelector('#current-weather').classList.remove('hidden')
+  document.querySelector('#five-day').classList.remove('hidden')
+
   cityName.textContent = cityInfo.name
   main.classList.add('searched')
   main.classList.remove('no-search')

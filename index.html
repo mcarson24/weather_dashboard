@@ -17,12 +17,12 @@
         </form>
       </section>
     </header>
-    <main class="flex flex-col justify-between items-center" style="height: 1000px">
-      <h2 class="text-3xl" id="city-name">Philadelphia</h2>
-      <div class="flex flex-col justify-between h-4/5" style="height: 800px;">
+    <main class="flex flex-col justify-between" style="height: 1000px">
+      <h2 class="hidden text-3xl" id="city-name">Philadelphia</h2>
+      <div class="flex flex-col justify-between h-4/5" style="height: 1000px;">
         <div class="flex">
-          <ul id="recent-searches" class="w-1/5"></ul>
-          <section id="current-weather" class="flex flex-col w-4/5">
+          <ul id="recent-searches" class="my-4"></ul>
+          <section id="current-weather" class="hidden flex flex-col w-4/5">
             <article class="flex flex-col justify-center items-center w-full p-4 rounded bg-zinc-100 drop-shadow-lg">
               <div class="flex justify-around w-full">
                 <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" class="w-60">
@@ -67,7 +67,7 @@
             </article>
           </section>
         </div>
-        <section id="five-day" class="flex flex-row flex-wrap">
+        <section id="five-day" class="hidden flex flex-row flex-wrap">
           <article id="forecast-0" class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
             <h2 class="text-4xl">Mar 29th</h2>
             <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
@@ -163,7 +163,7 @@
                 </div>
                 <div class="flex flex-col items-center justify-center w-1/2">
                   <h3 class="humidity text-xl font-bold">
-                    <span id="forecast-2-wind">35</span>%
+                    <span id="forecast-2-humidity">35</span>%
                   </h3>
                   <span class="text-gray-500">humidity</span>
                 </div>
