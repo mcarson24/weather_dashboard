@@ -14,6 +14,7 @@ const geocode = async city => {
 }
 
 const search = async city => {
+  // TODO: Handle cases where no city is returned from the api call.
   const cityDetails = await geocode(city)
 
   // Use one-call endpoing to get current and forecastes weather data
@@ -67,8 +68,8 @@ document.querySelector('.search').addEventListener('submit', async e => {
   e.preventDefault()
   const city = e.target.children[0].value.trim()
   if (!city) {
-    // Do some error handling
-    // Add message to page, turn input red
+    // TODO: Do some error handling
+    // TODO: Add message to page, turn input red
     return
   }
   await search(city)
