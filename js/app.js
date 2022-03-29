@@ -31,7 +31,7 @@ const search = async city => {
     })
 }
 
-addCityToRecentSearch = () => {
+const addCityToRecentSearch = () => {
   const city = cityInfo.name
   const recents = JSON.parse(localStorage.getItem('recentSearches')) || []
   // If the city is already in the most recents searches, move it to the first item in the array 
@@ -40,9 +40,22 @@ addCityToRecentSearch = () => {
   // Limit the array to the ten most recent searches
   recents.splice(10)
   localStorage.setItem('recentSearches', JSON.stringify(recents))
+  updateRecentSearches()
 }
 
-updatePage = () => {
+const updateRecentSearches = () => {
+  const searches = JSON.parse(localStorage.getItem('recentSearches'))
+  const recentSearches = document.querySelector('#recent-searches')
+  recentSearches.innerHTML = ''
+  searches.forEach(search => {
+    const li = document.createElement('li')
+    li.textContent = search
+    recentSearches.append(li)
+  })
+}
+
+
+const updatePage = () => {
   cityName.textContent = cityInfo.name
   main.classList.add('searched')
   main.classList.remove('no-search')
@@ -75,4 +88,8 @@ document.querySelector('.search').addEventListener('submit', async e => {
   await search(city)
   updatePage()
   document.querySelector('#city').value = ''
+})
+
+document.addEventListener('DOMContentLoaded', () => {
+  updateRecentSearches()
 })
