@@ -19,16 +19,11 @@ const search = async city => {
 
 const forecast = async city => {
   // 5-day forecast Endpoint
-  const response = await fetch(`https://api.openweathermap.org/data/2.5/forecast?lat=${cityInformation.lat}&lon=${cityInformation.lon}&appid=${apiKey}`)
+  const response = await fetch(`https://api.openweathermap.org/data/2.5/onecall?lat=${cityInformation.lat}&lon=${cityInformation.lon}&appid=${apiKey}&units=imperial`)
 
   const forecast = await response.json()
-  let fiveDay = {}
-  forecast.list.forEach(weatherInfo => {
-    if (!fiveDay[weatherInfo.dt_txt.slice(0, "2022-03-29 00:00:00".indexOf('00:00') - 1)]) {
-      fiveDay[weatherInfo.dt_txt.slice(0, "2022-03-29 00:00:00".indexOf('00:00') - 1)] = weatherInfo
-    }
-  })
-  return fiveDay
+
+  return forecast.daily.splice(1, 5)
 }
 
 addRecentSearch = city => {
