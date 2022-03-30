@@ -10,19 +10,19 @@
   </head>
   <body>
     <header class="flex flex-col h-64 py-4 justify-around items-center bg-purple-700">
-      <h1 class="text-6xl text-white">JavaScript Weather Center</h1>
+      <h1 class="text-6xl text-center text-white">JavaScript Weather Center</h1>
       <section class="search">
         <form>
-          <input type="text" id="city" placeholder="Search for a city" class="py-2 px-1 rounded">
+          <input type="text" id="city" placeholder="Search for a city" class="w-72 py-2 px-1 rounded">
         </form>
       </section>
     </header>
-    <main class="flex flex-col justify-between" style="height: 1000px">
+    <main class="flex flex-col justify-between px-6 py-4" style="height: 1000px">
       <h2 class="hidden text-3xl" id="city-name">Philadelphia</h2>
       <div class="flex flex-col justify-between h-4/5" style="height: 1000px;">
-        <div class="flex">
+        <div class="flex flex-col-reverse lg:flex-row">
           <ul id="recent-searches" class="my-4"></ul>
-          <section id="current-weather" class="hidden flex flex-col w-4/5">
+          <section id="current-weather" class="hidden flex flex-col w-full py-6">
             <article class="flex flex-col justify-center items-center w-full p-4 rounded bg-zinc-100 drop-shadow-lg">
               <div class="flex justify-around w-full">
                 <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" class="w-60">
@@ -67,8 +67,8 @@
             </article>
           </section>
         </div>
-        <section id="five-day" class="hidden flex flex-row flex-wrap">
-          <article id="forecast-0" class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+        <section id="five-day" class="hidden flex flex-row justify-center flex-wrap">
+          <article id="forecast-0" class="flex flex-col justify-center items-center w-full md:w-60 p-4 my-3 mx-2 rounded bg-gray-100 drop-shadow-lg">
             <h2 class="text-4xl">Mar 29th</h2>
             <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
             <div class="flex flex-col w-full justify-center items-center">
@@ -102,7 +102,7 @@
               </div>
             </div>
           </article>
-          <article id="forecast-1" class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <article id="forecast-1" class="flex flex-col justify-center items-center w-full md:w-60 p-4 my-3 mx-2 rounded bg-gray-100 drop-shadow-lg">
             <h2 class="text-4xl">Mar 30th</h2>
             <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
             <div class="flex flex-col w-full justify-center items-center">
@@ -136,7 +136,7 @@
               </div>
             </div>
           </article>
-          <article id="forecast-2" class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <article id="forecast-2" class="flex flex-col justify-center items-center w-full md:w-60 p-4 my-3 mx-2 rounded bg-gray-100 drop-shadow-lg">
             <h2 class="text-4xl">Mar 31st</h2>
             <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
             <div class="flex flex-col w-full justify-center items-center">
@@ -170,7 +170,7 @@
               </div>
             </div>
           </article>
-          <article id="forecast-3" class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <article id="forecast-3" class="flex flex-col justify-center items-center w-full md:w-60 p-4 my-3 mx-2 rounded bg-gray-100 drop-shadow-lg">
             <h2 class="text-4xl">Apr 1st</h2>
             <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
             <div class="flex flex-col w-full justify-center items-center">
@@ -204,7 +204,7 @@
               </div>
             </div>
           </article>
-          <article id="forecast-4" class="flex flex-col justify-center items-center w-60 p-4 mx-2 rounded bg-gray-100 drop-shadow-lg">
+          <article id="forecast-4" class="flex flex-col justify-center items-center w-full md:w-60 p-4 my-3 mx-2 rounded bg-gray-100 drop-shadow-lg">
             <h2 class="text-4xl">Apr 2nd</h2>
             <img src="http://openweathermap.org/img/wn/02n@4x.png" alt="" width="100px" height="100px">
             <div class="flex flex-col w-full justify-center items-center">
