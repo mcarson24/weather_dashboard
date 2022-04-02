@@ -8,7 +8,7 @@ const currentWeather = document.querySelector('#current-weather')
 
 const geocode = async city => {
   // Geocoding Endpoint
-  let response = await fetch(`http://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`)
+  let response = await fetch(`https://api.openweathermap.org/geo/1.0/direct?q=${city}&appid=${apiKey}`)
 
   return await response.json()
 }
