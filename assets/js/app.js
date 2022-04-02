@@ -45,6 +45,7 @@ const addCityToRecentSearch = () => {
 
 const updateRecentSearches = () => {
   const searches = JSON.parse(localStorage.getItem('recentSearches'))
+  if (!searches) return
   const recentSearches = document.querySelector('#recent-searches')
   recentSearches.innerHTML = ''
   searches.forEach(search => {
